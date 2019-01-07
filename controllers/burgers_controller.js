@@ -20,6 +20,7 @@ burger.insertOne([
     req.body.burger_name
 ],
     function(data){
+        console.log("test");
         res.redirect('/');
     });
 
