@@ -22,10 +22,11 @@ burger.insertOne([
     function(data){
         res.redirect('/');
     });
+
 });
 
-router.put('/burgers:id', function(req, res){
-    let condition = 'id =' + req.params.id;
+router.put('/burgers/:id', function(req, res){
+    let condition = `id = + ${req.params.id}`;
 
     burger.updateOne({
         devoured: true
