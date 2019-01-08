@@ -13,21 +13,21 @@ router.get('/', function(req, res){
     });
 });
 
-router.post('/burgers', function(req, res){
+router.post('/api/burgers', function(req, res){
+    console.log(req.body);
 burger.insertOne([
     'burger_name'
 ],[
-    req.body.burger_name
+    "test" //Hard coded name of burger.  Just need to find req.body
 ],
     function(data){
-        console.log("test");
-        res.redirect('/');
+        res.json({id: data.id});
     });
 
 });
 
-router.put('/burgers/:id', function(req, res){
-    let condition = `id = + ${req.params.id}`;
+router.put('/api/burgers/:id', function(req, res){
+    let condition = `id = ${req.params.id}`;
 
     burger.updateOne({
         devoured: true
