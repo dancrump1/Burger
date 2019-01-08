@@ -9,8 +9,9 @@ let routes = require('./controllers/burgers_controller');
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
+app.use(express.static("public"));
 
-app.get("/", routes);
+app.use("/", routes);
 
 app.listen(PORT, ()=>{
     console.log("Listening on: "+PORT);
