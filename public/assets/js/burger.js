@@ -24,10 +24,12 @@ $(function () {
         };
         $.ajax("/api/burgers", {
             type: "POST",
-            data: newBurger
+            data: JSON.stringify(newBurger),
+            dataType: "json",
+            contentType: "application/json"
         }).then(function () {
             console.log("added burger");
-            location.reload();
+            // location.reload();
         })
     })
 });

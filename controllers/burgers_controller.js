@@ -18,21 +18,20 @@ router.post('/api/burgers', function(req, res){
 burger.insertOne([
     'burger_name'
 ],[
-    "test" //Hard coded name of burger.  Just need to find req.body
+    req.body.burger_name
 ],
     function(data){
-        res.json({id: data.id});
+        res.redirect("/");
     });
 
 });
 
 router.put('/api/burgers/:id', function(req, res){
     let condition = `id = ${req.params.id}`;
-
     burger.updateOne({
         devoured: true
     }, condition, function(data){
-        res.redirect('/')
+        res.end();
     });
 });
 
